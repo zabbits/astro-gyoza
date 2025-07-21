@@ -162,3 +162,9 @@ pnpm preview
 进入项目配置页面，直接点击 Deploy 按钮，静静等待部署完成就 👌 了。
 
 Vercel 会为你分配一个域名，你可以在项目设置中设置自定义域名，更多操作请参考 Vercel 文档。
+
+## 使用obsidian excalidraw
+
+[这是excaliraw](./foo.excalidraw.md)
+
+[another excalidraw](./bar.excalidraw.md)

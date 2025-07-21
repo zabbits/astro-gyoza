@@ -29,6 +29,19 @@ const { title, description, image } = Astro.props
     <ThemeLoader />
     <AccentColorInjector />
     <PrintVersion />
+    <!-- dev模式下解析exalidraw -->
+    {
+        import.meta.env.DEV && (
+            <script type="module" is:inline>
+                import RefreshRuntime from
+                'http://localhost:4321/@react-refresh'
+                RefreshRuntime.injectIntoGlobalHook(window)
+                window.$RefreshReg$ = () => {}
+                window.$RefreshSig$ = () => (type) => type
+                window.__vite_plugin_react_preamble_installed__ = true
+            </script>
+        )
+    }
   </head>
   <body>
     <slot />

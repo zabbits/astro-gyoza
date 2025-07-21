@@ -9,6 +9,7 @@ import { rehypeHeading } from './src/plugins/rehypeHeading'
 import remarkDirective from 'remark-directive'
 import { remarkSpoiler } from './src/plugins/remarkSpoiler'
 import { remarkEmbed } from './src/plugins/remarkEmbed'
+import { remarkExcalidraw } from './src/plugins/remarkExcalidraw'
 import tailwind from '@astrojs/tailwind'
 import react from '@astrojs/react'
 import sitemap from '@astrojs/sitemap'
@@ -35,7 +36,14 @@ export default defineConfig({
   markdown: {
     syntaxHighlight: false,
     smartypants: false,
-    remarkPlugins: [remarkMath, remarkDirective, remarkEmbed, remarkSpoiler, remarkReadingTime],
+    remarkPlugins: [
+      remarkMath,
+      remarkDirective,
+      remarkEmbed,
+      remarkSpoiler,
+      remarkReadingTime,
+      remarkExcalidraw,
+    ],
     rehypePlugins: [
       rehypeHeadingIds,
       rehypeKatex,
@@ -53,6 +61,10 @@ export default defineConfig({
       rollupOptions: {
         external: ['/pagefind/pagefind.js'],
       },
+    },
+    // dev模式下excaliraw需要
+    define: {
+      'process.env': {},
     },
   },
 })
