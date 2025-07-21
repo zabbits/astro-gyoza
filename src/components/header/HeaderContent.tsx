@@ -42,7 +42,7 @@ function AccessibleMenu() {
       <AnimatePresence>
         {shouldShow && (
           <motion.div
-            className="fixed z-10 top-12 inset-x-0 flex justify-center pointer-events-none"
+            className="fixed z-10 top-4 inset-x-0 flex justify-center pointer-events-none"
             initial={{ y: -20 }}
             animate={{ y: 0 }}
             exit={{ y: -20, opacity: 0 }}
