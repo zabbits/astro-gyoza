@@ -19,35 +19,10 @@ containers.forEach((container) => {
         files: jsonData.files,
       }
       const root: Root = ReactDOM.createRoot(container)
-      const opts: ExcalidrawProps = {
-        initialData,
-        zenModeEnabled: false,
-        viewModeEnabled: true,
-        gridModeEnabled: false,
-        objectsSnapModeEnabled: false,
-        UIOptions: {
-          canvasActions: {
-            changeViewBackgroundColor: true,
-            clearCanvas: false,
-            export: false,
-            loadScene: false,
-            saveToActiveFile: false,
-            toggleTheme: true,
-            saveAsImage: false,
-          },
-          tools: {
-            image: false,
-          },
-        },
-        excalidrawAPI: (api: any) => {
-          setTimeout(() => {
-            api.scrollToContent(undefined, {
-              fitToContent: true,
-            })
-          }, 100)
-        },
-        // zenmode开启时不会展示
-        renderTopRightUI: generateMaxiumIcon({}),
+      const rawopts = { initialData, ...defaultOpts() }
+      const opts = {
+        ...rawopts,
+        renderTopRightUI: generateMaxiumIcon(rawopts),
       }
 
       root.render(React.createElement(ExcalidrawWrapper, opts))
@@ -56,3 +31,33 @@ containers.forEach((container) => {
     }
   }
 })
+
+function defaultOpts(): ExcalidrawProps {
+  return {
+    zenModeEnabled: false,
+    viewModeEnabled: true,
+    gridModeEnabled: false,
+    objectsSnapModeEnabled: false,
+    UIOptions: {
+      canvasActions: {
+        changeViewBackgroundColor: true,
+        clearCanvas: false,
+        export: false,
+        loadScene: false,
+        saveToActiveFile: false,
+        toggleTheme: true,
+        saveAsImage: false,
+      },
+      tools: {
+        image: false,
+      },
+    },
+    excalidrawAPI: (api: any) => {
+      setTimeout(() => {
+        api.scrollToContent(undefined, {
+          fitToContent: true,
+        })
+      }, 100)
+    },
+  }
+}

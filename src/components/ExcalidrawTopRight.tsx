@@ -1,43 +1,32 @@
-import type { ExcalidrawProps, UIAppState } from "@excalidraw/excalidraw/types/types"
+import type { ExcalidrawInitialDataState, ExcalidrawProps, UIAppState } from "@excalidraw/excalidraw/types/types"
 import ExcalidrawWrapper from "./ExcalidrawWrapper"
 import { useState } from "react";
+import * as Dialog from "@radix-ui/react-dialog";
 
 export function generateMaxiumIcon(opts: ExcalidrawProps) {
     return (isMobile: boolean, appState: UIAppState) => {
-        const [isMaskVisible, setIsMaskVisible] = useState(false);
+        const [isModalOpen, setIsModalOpen] = useState(false);
+        const openModal = () => setIsModalOpen(true);
+        const closeModal = () => setIsModalOpen(false);
 
-        const showMask = () => {
-            setIsMaskVisible(true);
-        };
-
-        const hideMask = () => {
-            setIsMaskVisible(false);
-        };
-
-        // 阻止事件冒泡，防止点击内容区时关闭遮罩
-        const handleContentClick = (e: any) => {
-            e.stopPropagation();
-        };
-
-        // TODO: 使用Excalidraw展示数据
         return (
-            <>
-                <i onClick={showMask} className="iconfont icon-search"></i>
-                {isMaskVisible && (
-                    <div className="mask" onClick={hideMask}>
-                        <div className="w-[100px] h-[100px]" onClick={handleContentClick}>
-                            <h3>这是一个遮罩层</h3>
-                            <p>点击背景或关闭按钮可以关闭它。</p>
-                            <button onClick={hideMask}>关闭</button>
-                        </div>
-                    </div>
-                )}
-            </>
+            <Dialog.Root>
+                <Dialog.Trigger asChild>
+                    <button className="rounded-md px-4 py-2 font-semibold text-blue shadow-md hover:bg-blue-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75">
+                        <i className="iconfont icon-search"></i>
+                    </button>
+                </Dialog.Trigger>
+
+                <Dialog.Portal>
+                    <Dialog.Overlay className="fixed inset-0 z-40 bg-black/50" />
+                    <Dialog.Content className="
+                        fixed left-1/2 top-1/2 z-50 w-11/12 h-[90vh] -translate-x-1/2 -translate-y-1/2
+                        rounded-xl border bg-white px-6 py-4 shadow-lg dark:bg-gray-800
+                        ">
+                        <ExcalidrawWrapper {...opts} />
+                    </Dialog.Content>
+                </Dialog.Portal>
+            </Dialog.Root>
         )
     }
-}
-
-// 这里如何动态添加一个drawer, 在drawer中渲染excaliraw
-function maxiumExcalidraw(opts: ExcalidrawProps) {
-    console.log("oops")
 }
