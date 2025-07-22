@@ -2,7 +2,7 @@ import type { Root } from 'react-dom/client'
 import type { ExcalidrawProps } from '@excalidraw/excalidraw/types/types'
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import ExcalidrawWrapper from '@/components/ExcalidrawWrapper'
+import ExcalidrawWrapper, { type ExcalidrawWrapperProps } from '@/components/ExcalidrawWrapper'
 import { generateMaxiumIcon } from '@/components/ExcalidrawTopRight'
 
 const containers = document.querySelectorAll('.excalidraw-container')
@@ -19,9 +19,10 @@ containers.forEach((container) => {
         files: jsonData.files,
       }
       const root: Root = ReactDOM.createRoot(container)
-      const rawopts = { initialData, ...defaultOpts() }
-      const opts = {
+      const rawopts = { className: 'h-full', initialData, ...defaultOpts() }
+      const opts: ExcalidrawWrapperProps = {
         ...rawopts,
+        className: 'h-[500px]',
         renderTopRightUI: generateMaxiumIcon(rawopts),
       }
 
@@ -32,7 +33,7 @@ containers.forEach((container) => {
   }
 })
 
-function defaultOpts(): ExcalidrawProps {
+function defaultOpts(): ExcalidrawWrapperProps {
   return {
     zenModeEnabled: false,
     viewModeEnabled: true,

@@ -5,10 +5,6 @@ import * as Dialog from "@radix-ui/react-dialog";
 
 export function generateMaxiumIcon(opts: ExcalidrawProps) {
     return (isMobile: boolean, appState: UIAppState) => {
-        const [isModalOpen, setIsModalOpen] = useState(false);
-        const openModal = () => setIsModalOpen(true);
-        const closeModal = () => setIsModalOpen(false);
-
         return (
             <Dialog.Root>
                 <Dialog.Trigger asChild>
