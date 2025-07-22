@@ -1,10 +1,27 @@
 import { glob } from 'astro/loaders'
 import { z, defineCollection } from 'astro:content'
+import { contentPath } from './config.json'
+
+const BASE = contentPath.base
+
+const paths = {
+  posts: BASE,
+  projects: `${BASE}/projects`,
+  spec: `${BASE}/spec`,
+  friends: `${BASE}/friends`,
+}
 
 const postsCollection = defineCollection({
   loader: glob({
-    pattern: ['**/*.md', '!**/_*.md', '!**/*.excalidraw.md'],
-    base: './src/content/posts',
+    pattern: [
+      '**/*.md',
+      '!**/_*.md',
+      '!**/*.excalidraw.md',
+      '!projects/**',
+      '!spec/**',
+      '!friends/**',
+    ],
+    base: `${BASE}`,
   }),
   schema: z.object({
     title: z.string(),
@@ -23,7 +40,7 @@ const postsCollection = defineCollection({
 const projectsCollection = defineCollection({
   loader: glob({
     pattern: ['**/*.yml', '**/*.yaml'],
-    base: './src/content/projects',
+    base: paths.projects,
   }),
   schema: z.object({
     title: z.string(),
@@ -36,7 +53,7 @@ const projectsCollection = defineCollection({
 const specCollection = defineCollection({
   loader: glob({
     pattern: ['**/*.md', '!**/_*.md', '!**/*.excalidraw.md'],
-    base: './src/content/spec',
+    base: paths.spec,
   }),
   schema: z.object({
     title: z.string(),
@@ -48,7 +65,7 @@ const specCollection = defineCollection({
 const friendsCollection = defineCollection({
   loader: glob({
     pattern: ['**/*.yml', '**/*.yaml'],
-    base: './src/content/friends',
+    base: paths.friends,
   }),
   schema: z.object({
     title: z.string(),

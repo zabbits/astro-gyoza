@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom/client'
 import ExcalidrawWrapper, { type ExcalidrawWrapperProps } from '@/components/ExcalidrawWrapper'
 import { generateMaxiumIcon } from '@/components/ExcalidrawTopRight'
 
+// TODO: 第二次打开页面无法正确加载excalidraw
 const containers = document.querySelectorAll('.excalidraw-container')
 
 const renderedInstances = new Map<Element, { root: Root; jsonData: any }>()
