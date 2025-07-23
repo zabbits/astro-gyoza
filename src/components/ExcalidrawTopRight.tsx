@@ -1,10 +1,9 @@
-import type { ExcalidrawInitialDataState, ExcalidrawProps, UIAppState } from "@excalidraw/excalidraw/types/types"
+import type { ExcalidrawProps, UIAppState } from "@excalidraw/excalidraw/types/types"
 import ExcalidrawWrapper from "./ExcalidrawWrapper"
-import { useState } from "react";
 import * as Dialog from "@radix-ui/react-dialog";
 
 export function generateMaxiumIcon(opts: ExcalidrawProps) {
-    return (isMobile: boolean, appState: UIAppState) => {
+    return (_isMobile: boolean, _appState: UIAppState) => {
         return (
             <Dialog.Root>
                 <Dialog.Trigger asChild>

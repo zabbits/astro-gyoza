@@ -15,8 +15,8 @@
   },
   "hero": {
     "name": "zabbits",
-    "bio": "A Curd Dev",
-    "description": "Ai eat me.",
+    "bio": "只会 CRUD 的 <Coder />",
+    "description": "AI kill me.",
     "socials": [
       {
         "name": "Github",

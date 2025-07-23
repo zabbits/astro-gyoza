@@ -4,11 +4,6 @@ import ReactDOM from 'react-dom/client'
 import ExcalidrawWrapper, { type ExcalidrawWrapperProps } from '@/components/ExcalidrawWrapper'
 import { generateMaxiumIcon } from '@/components/ExcalidrawTopRight'
 
-// TODO: 第二次打开页面无法正确加载excalidraw
-const containers = document.querySelectorAll('.excalidraw-container')
-
-const renderedInstances = new Map<Element, { root: Root; jsonData: any }>()
-
 function getCurrentTheme(): 'dark' | 'light' {
   return document.documentElement.dataset.theme === 'dark' ? 'dark' : 'light'
 }
@@ -73,33 +68,34 @@ function updateAllExcalidrawThemes() {
   }
 }
 
-containers.forEach((container) => {
-  const jsonString = (container as HTMLElement).dataset.excalidrawJson
-  if (jsonString) {
-    try {
-      const jsonData = JSON.parse(jsonString)
-      renderOrUpdateInstance(container, jsonData)
-    } catch (e) {
-      container.textContent = '手绘不见了'
+const renderedInstances = new Map<Element, { root: Root; jsonData: any }>()
+
+function initDraw() {
+  const containers = document.querySelectorAll('.excalidraw-container')
+  containers.forEach((container) => {
+    const jsonString = (container as HTMLElement).dataset.excalidrawJson
+    if (jsonString) {
+      try {
+        const jsonData = JSON.parse(jsonString)
+        renderOrUpdateInstance(container, jsonData)
+      } catch (e) {
+        container.textContent = '手绘不见了'
+      }
     }
-  }
-})
+  })
 
-const observer = new MutationObserver((mutationsList) => {
-  for (const mutation of mutationsList) {
-    if (mutation.type === 'attributes' && mutation.attributeName === 'data-theme') {
-      updateAllExcalidrawThemes()
+  const observer = new MutationObserver((mutationsList) => {
+    for (const mutation of mutationsList) {
+      if (mutation.type === 'attributes' && mutation.attributeName === 'data-theme') {
+        updateAllExcalidrawThemes()
+      }
     }
-  }
-})
+  })
+  observer.observe(document.documentElement, { attributes: true })
+}
 
-observer.observe(document.documentElement, { attributes: true })
-
-document.addEventListener(
-  'swup:willReplaceContent',
-  () => {
-    observer.disconnect()
-    renderedInstances.clear()
-  },
-  { once: true },
-)
+if (document.readyState === 'complete') {
+  initDraw()
+} else {
+  document.addEventListener('DOMContentLoaded', initDraw)
+}
