@@ -2,7 +2,7 @@
 @import './shiki.css';
 @import './markdown.css';
 @import './signature.css';
-@import './trasition.css';
+/* @import './trasition.css'; */
 
 @font-face {
   font-family: 'Atkinson';
