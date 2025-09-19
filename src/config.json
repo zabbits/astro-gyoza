@@ -36,7 +36,7 @@
   "color": {
     "accent": [{ "light": "#9F44D3", "dark": "#E2B0FF" }],
     "bg": {
-      "primary": { "light": "#ffffff", "dark": "#1c1c1e" },
+      "primary": { "light": "#f7f6f6", "dark": "#1c1c1e" },
       "secondary": { "light": "#f4f4f5", "dark": "#27272a" }
     },
     "text": {

@@ -14,7 +14,7 @@ const { remarkPluginFrontmatter } = await render(entry)
 ---
 
 <a
-  class="block relative py-8 focus-visible:outline-0 transition-transform duration-200 ease-in-out hover:scale-[1.02]"
+  class="block relative py-6 focus-visible:outline-0 transition-transform duration-200 ease-in-out hover:scale-[1.02]"
   href={`/posts/${entry.id}`}
 >
   <PostCardHoverOverlay client:only="react" />
@@ -26,7 +26,7 @@ const { remarkPluginFrontmatter } = await render(entry)
       )
     }
   </h2>
-  <div class="mt-4 overflow-hidden">
+  <div class="mt-2 overflow-hidden">
     {
       entry.data.cover && (
         <img
@@ -37,7 +37,6 @@ const { remarkPluginFrontmatter } = await render(entry)
         />
       )
     }
-    {entry.data.summary && <p>{entry.data.summary}</p>}
   </div>
   <div class="mt-2 flex flex-wrap items-center justify-end gap-4 select-none">
     <PostMetaInfo
