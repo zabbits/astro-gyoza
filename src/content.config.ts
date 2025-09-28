@@ -2,7 +2,7 @@ import { glob } from 'astro/loaders'
 import { z, defineCollection } from 'astro:content'
 import { contentPath } from './config.json'
 
-const BASE = contentPath.base
+const BASE = process.env.CONTENT_PATH_BASE || contentPath.base
 
 const paths = {
   posts: BASE,
