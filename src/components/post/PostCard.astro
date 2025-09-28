@@ -3,6 +3,7 @@ import type { CollectionEntry } from 'astro:content'
 import { PostCardHoverOverlay } from './PostCardHoverOverlay'
 import PostMetaInfo from './PostMetaInfo.astro'
 import { render } from 'astro:content'
+import { slugify } from '@/utils/content'
 
 interface Props {
   entry: CollectionEntry<'posts'>
@@ -38,7 +39,7 @@ const { remarkPluginFrontmatter } = await render(entry)
       )
     }
   </div>
-  <div class="mt-2 flex flex-wrap items-center justify-end gap-4 select-none">
+  <div class="mt-2 flex flex-wrap items-center justify-between gap-4 select-none">
     <PostMetaInfo
       class="grow"
       date={entry.data.date}
@@ -47,30 +48,63 @@ const { remarkPluginFrontmatter } = await render(entry)
       readingMinutes={remarkPluginFrontmatter.readingMinutes}
     />
     <div class="group shrink-0 text-accent flex items-center gap-2">
-      <span>继续阅读</span>
-      <svg width="36" height="12" viewBox="0 0 36 12" fill="none" class="stroke-current">
-        <path
-          d="M0.75 6H11.25 M6 0.75L11.25 6L6 11.25"
-          stroke-linecap="round"
-          stroke-linejoin="round"></path>
-        <path
-          d="M15 10L19.5 5.5L15 1"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          class="delay-100 opacity-0 group-hover:opacity-100"></path>
-        <path
-          d="M23 10L27.5 5.5L23 1"
-          stroke-opacity="0.66"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          class="delay-200 opacity-0 group-hover:opacity-100"></path>
-        <path
-          d="M31 10L35.5 5.5L31 1"
-          stroke-opacity="0.35"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          class="delay-300 opacity-0 group-hover:opacity-100"></path>
-      </svg>
+      {
+        entry.data.category && (
+          <div class="flex items-center">
+            <i class="iconfont icon-folder mr-2" />
+            <a
+              class="hover:text-accent hover:underline underline-offset-2 decoration-dashed"
+              href={`/categories/${slugify(entry.data.category)}`}
+            >
+              {entry.data.category}
+            </a>
+          </div>
+        )
+      }
+      {
+        entry.data.tags.length > 0 && (
+          <div class="flex items-center">
+            <i class="iconfont icon-hashtag mr-2" />
+            {entry.data.tags.map((tag, index) => (
+              <>
+                {index > 0 && <span class="mr-1">, </span>}
+                <a
+                  class="hover:text-accent hover:underline underline-offset-2 decoration-dashed"
+                  href={`/tags/${slugify(tag)}`}
+                >
+                  {tag}
+                </a>
+              </>
+            ))}
+          </div>
+        )
+      }
+
+
+      <!-- <span>继续阅读</span> -->
+      <!-- <svg width="36" height="12" viewBox="0 0 36 12" fill="none" class="stroke-current"> -->
+      <!--   <path -->
+      <!--     d="M0.75 6H11.25 M6 0.75L11.25 6L6 11.25" -->
+      <!--     stroke-linecap="round" -->
+      <!--     stroke-linejoin="round"></path> -->
+      <!--   <path -->
+      <!--     d="M15 10L19.5 5.5L15 1" -->
+      <!--     stroke-linecap="round" -->
+      <!--     stroke-linejoin="round" -->
+      <!--     class="delay-100 opacity-0 group-hover:opacity-100"></path> -->
+      <!--   <path -->
+      <!--     d="M23 10L27.5 5.5L23 1" -->
+      <!--     stroke-opacity="0.66" -->
+      <!--     stroke-linecap="round" -->
+      <!--     stroke-linejoin="round" -->
+      <!--     class="delay-200 opacity-0 group-hover:opacity-100"></path> -->
+      <!--   <path -->
+      <!--     d="M31 10L35.5 5.5L31 1" -->
+      <!--     stroke-opacity="0.35" -->
+      <!--     stroke-linecap="round" -->
+      <!--     stroke-linejoin="round" -->
+      <!--     class="delay-300 opacity-0 group-hover:opacity-100"></path> -->
+      <!-- </svg> -->
     </div>
   </div>
 </a>
