@@ -9,6 +9,7 @@ const paths = {
   projects: `${BASE}/projects`,
   spec: `${BASE}/spec`,
   friends: `${BASE}/friends`,
+  miscellanea: `${BASE}/miscellanea`,
 }
 
 const postsCollection = defineCollection({
@@ -20,6 +21,7 @@ const postsCollection = defineCollection({
       '!projects/**',
       '!spec/**',
       '!friends/**',
+      '!miscellanea/**',
       '!.obsidian/**',
       '!Work/**',
       '!work/**',
@@ -78,9 +80,20 @@ const friendsCollection = defineCollection({
   }),
 })
 
+const miscellaneaCollection = defineCollection({
+  loader: glob({
+    pattern: ['**/*.md', '!**/_*.md'],
+    base: paths.miscellanea,
+  }),
+  schema: z.object({
+    date: z.date(),
+  }),
+})
+
 export const collections = {
   posts: postsCollection,
   projects: projectsCollection,
   spec: specCollection,
   friends: friendsCollection,
+  miscellanea: miscellaneaCollection,
 }

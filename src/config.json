@@ -59,6 +59,11 @@
       "icon": "icon-archive"
     },
     {
+      "name": "杂记",
+      "link": "/miscellanea",
+      "icon": "icon-pen"
+    },
+    {
       "name": "项目",
       "link": "/projects",
       "icon": "icon-flask"
