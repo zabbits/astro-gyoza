@@ -62,12 +62,13 @@ const lastMod = current.data.lastMod || current.data.date
   mdSlug={mdSlug}
 >
   <div class="py-16" data-pagefind-body>
-    <div class="relative mx-auto w-full max-w-[950px] px-4 md:px-4">
+    <div class="relative mx-auto w-full max-w-[900px] px-4 md:px-4">
       <article class="md:min-w-0 md:mx-[64px] md:px-4">
         <header class="space-y-4">
           <h1 class="text-3xl font-bold text-center">
             {current.data.title}
           </h1>
+          <div class="flex justify-center gap-2">
           <PostMetaInfo
             class="justify-center"
             date={current.data.date}
@@ -80,6 +81,7 @@ const lastMod = current.data.lastMod || current.data.date
             category={current.data.category}
             tags={current.data.tags}
           />
+          </div>
           <div>
             <Outdate lastMod={lastMod} client:idle />
           </div>
@@ -106,16 +108,14 @@ const lastMod = current.data.lastMod || current.data.date
       </article>
 
       <aside
-        class="hidden lg:block fixed top-36 w-[260px]"
-        style="left: calc((100vw - 950px) / 2 + 950px)"
+        class="hidden lg:block fixed top-36 w-[160px]"
+        style="left: calc((100vw - 900px) / 2 + 900px - 64px)"
         data-pagefind-ignore
       >
         <div class="space-y-4">
-          <SectionBlock title="目录">
             <PostToc headings={headings} client:idle />
             <hr class="my-2 border-primary max-w-[100px]" />
             <ReadingProgress client:idle />
-          </SectionBlock>
           <ActionAside client:idle />
         </div>
       </aside>
