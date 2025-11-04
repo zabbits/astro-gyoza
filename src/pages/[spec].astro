@@ -39,8 +39,8 @@ const isMdContentEmpty = md.body?.trim().length === 0
 {
   isPageLayout ? (
     <PageLayout title={md.data.title} description={md.data.description}>
-      <div class="max-w-[850px] mx-auto px-4 py-16 md:px-4">
-        <div class="md:mx-[64px] md:px-10 space-y-8" data-pagefind-body>
+      <div class="max-w-[950px] mx-auto px-4 py-16 md:px-4">
+        <div class="md:mx-[64px] md:px-4 space-y-8" data-pagefind-body>
           <header class="space-y-4">
             <h1 class="text-3xl font-bold">
               <Highlight>{md.data.title}</Highlight>
@@ -67,8 +67,8 @@ const isMdContentEmpty = md.body?.trim().length === 0
       mdSlug={md.id}
     >
       <div class="py-16" data-pagefind-body>
-        <div class="relative mx-auto w-full max-w-[850px] px-4 md:px-4">
-          <div class="md:min-w-0 md:mx-[64px] md:px-10">
+        <div class="relative mx-auto w-full max-w-[950px] px-4 md:px-4">
+          <div class="md:min-w-0 md:mx-[64px] md:px-4">
             <header class="space-y-4">
               <h1 class="text-3xl font-bold">
                 <Highlight>{md.data.title}</Highlight>
@@ -87,8 +87,8 @@ const isMdContentEmpty = md.body?.trim().length === 0
         </div>
 
         <aside
-          class="hidden lg:block fixed top-20 w-[260px]"
-          style="left: calc((100vw - 850px) / 2 + 850px + 2rem)"
+          class="hidden lg:block fixed top-36 w-[260px]"
+          style="left: calc((100vw - 950px) / 2 + 950px)"
           data-pagefind-ignore
         >
           <div class="space-y-4">
