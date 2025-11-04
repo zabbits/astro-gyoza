@@ -32,7 +32,7 @@ const { md } = Astro.props
 
 const { headings, Content } = await render(md)
 
-const isPageLayout = ['friends', 'projects'].includes(md.id)
+const isPageLayout = ['friends', 'projects', 'about'].includes(md.id)
 const isMdContentEmpty = md.body?.trim().length === 0
 ---
 
@@ -42,7 +42,7 @@ const isMdContentEmpty = md.body?.trim().length === 0
       <div class="max-w-[850px] mx-auto px-4 py-16 md:px-4">
         <div class="md:mx-[64px] md:px-10 space-y-8" data-pagefind-body>
           <header class="space-y-4">
-            <h1 class="text-4xl font-bold">
+            <h1 class="text-3xl font-bold">
               <Highlight>{md.data.title}</Highlight>
             </h1>
             <p>{md.data.description}</p>
@@ -70,7 +70,7 @@ const isMdContentEmpty = md.body?.trim().length === 0
         <div class="relative mx-auto w-full max-w-[850px] px-4 md:px-4">
           <div class="md:min-w-0 md:mx-[64px] md:px-10">
             <header class="space-y-4">
-              <h1 class="text-4xl font-bold">
+              <h1 class="text-3xl font-bold">
                 <Highlight>{md.data.title}</Highlight>
               </h1>
               <p>{md.data.description}</p>

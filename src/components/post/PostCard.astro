@@ -15,11 +15,11 @@ const { remarkPluginFrontmatter } = await render(entry)
 ---
 
 <a
-  class="block relative py-3 focus-visible:outline-0 transition-transform duration-200 ease-in-out hover:scale-[1.02]"
+  class="block relative py-2 focus-visible:outline-0 transition-transform duration-200 ease-in-out hover:scale-[1.02]"
   href={`/posts/${entry.id}`}
 >
   <PostCardHoverOverlay client:only="react" />
-  <h2 class="relative text-2xl font-bold">
+  <h2 class="relative text-xl font-bold">
     {entry.data.title}
     {
       entry.data.sticky > 0 && (
@@ -39,7 +39,7 @@ const { remarkPluginFrontmatter } = await render(entry)
   <!--     ) -->
   <!--   } -->
   <!-- </div> -->
-  <div class="flex flex-wrap items-center justify-between gap-4 select-none">
+  <div class="flex flex-wrap items-center justify-between gap-1 select-none">
     <PostMetaInfo
       class="grow"
       date={entry.data.date}
