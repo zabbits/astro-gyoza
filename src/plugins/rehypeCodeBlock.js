@@ -8,23 +8,17 @@ export function rehypeCodeBlock() {
       if (!child || child.type !== 'element' || child.tagName !== 'code' || !child.properties) {
         return
       }
-      const classes = child.properties.className
-      let lang = ''
-      if (!classes) {
-        node.children[0].properties = {
-          className: ['language-text'],
-        }
-        lang = 'text'
-      } else {
-        lang = classes[0].slice(9)
-      }
+      const lang = (node.properties && node.properties.codeLang) || 'text'
+      const file = (node.properties && node.properties.codeFile) || ''
 
       const codeBlock = h(
         'div',
         {
           class: 'code-block',
         },
-        [h('span', { class: 'lang-tag' }, lang), node],
+        // [h('span', { class: 'lang-tag' }, lang), node],
+        [h('div', { class: 'lang-tag' }, [h('span', {}, lang), h('span', {}, file)])],
+        node,
       )
 
       parent.children[index] = codeBlock

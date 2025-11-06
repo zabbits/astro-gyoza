@@ -40,5 +40,6 @@ html.gray {
 }
 
 * {
+  scrollbar-color: theme('backgroundColor.codeblock') transparent;
   scrollbar-width: thin;
 }

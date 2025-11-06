@@ -25,7 +25,7 @@ sticky: 1
 
 ### 安装依赖
 
-```sh
+```sh file=hhh.sh foo=bar
 cd astro-gyoza
 pnpm install
 ```

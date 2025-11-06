@@ -40,6 +40,7 @@ const config: Config = {
         root: 'rgb(var(--color-bg-root))',
         primary: 'rgb(var(--color-bg-primary))',
         secondary: 'rgb(var(--color-bg-secondary))',
+        codeblock: 'rgb(var(--color-bg-codeblock))',
       },
       borderColor: {
         primary: 'rgb(var(--color-border-primary))',

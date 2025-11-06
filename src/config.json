@@ -37,10 +37,11 @@
     "accent": [{ "light": "#9F44D3", "dark": "#E2B0FF" }],
     "bg": {
       "primary": { "light": "#f7f6f6", "dark": "#1c1c1e" },
-      "secondary": { "light": "#f4f4f5", "dark": "#27272a" }
+      "secondary": { "light": "#f4f4f5", "dark": "#27272a" },
+      "codeblock": { "light": "#50F0DE", "dark": "#3E4141" }
     },
     "text": {
-      "primary": { "light": "#373a3c", "dark": "#ffffff" },
+      "primary": { "light": "#373a3c", "dark": "#e6d8d8" },
       "secondary": { "light": "#71717a", "dark": "#d1d5db" }
     },
     "border": {
