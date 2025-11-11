@@ -17,7 +17,7 @@ export function rehypeCodeBlock() {
           class: 'code-block',
         },
         // [h('span', { class: 'lang-tag' }, lang), node],
-        [h('div', { class: 'lang-tag' }, [h('span', {}, lang), h('span', {}, file)])],
+        [h('div', { class: 'lang-tag' }, [h('span', {}, file), h('span', {}, lang)])],
         node,
       )
 
