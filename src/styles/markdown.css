@@ -1,3 +1,5 @@
+@import 'rehype-callouts/theme/github';
+
 .markdown > :first-child {
   @apply mt-0;
 }

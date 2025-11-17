@@ -18,6 +18,7 @@ import remarkMath from 'remark-math'
 import rehypeKatex from 'rehype-katex'
 import swup from '@swup/astro'
 import rehypeFigure from 'rehype-figure'
+import rehypeCallouts from 'rehype-callouts'
 
 // https://astro.build/config
 export default defineConfig({
@@ -47,6 +48,7 @@ export default defineConfig({
       rehypeTableBlock,
       rehypeFigure,
       rehypeImage,
+      rehypeCallouts,
     ],
     remarkRehype: { footnoteLabel: '参考', footnoteBackLabel: '返回正文' },
   },
