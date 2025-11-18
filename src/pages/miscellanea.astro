@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content'
 import PageLayout from '@/layouts/PageLayout.astro'
+import MarkdownWrapper from '@/components/MarkdownWrapper.astro'
 import { getFormattedDate } from '@/utils/date'
 import { render } from 'astro:content'
 
@@ -27,7 +28,9 @@ const title = '杂记'
                     {getFormattedDate(memo.data.date)}
                   </div>
                   <div class="prose prose-zinc dark:prose-invert mt-2">
-                    <Content />
+                    <MarkdownWrapper>
+                      <Content />
+                    </MarkdownWrapper>
                   </div>
                 </div>
               </div>
