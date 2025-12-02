@@ -4,7 +4,11 @@ import { visit } from 'unist-util-visit'
 export function rehypeLink() {
   return (tree) => {
     visit(tree, { tagName: 'a' }, (node, index, parent) => {
-      const isExternal = node.properties.href.startsWith('http')
+      const link = node.properties.href
+      if (link.endsWith('.md')) {
+        node.properties.href = link.slice(0, -3)
+      }
+      const isExternal = link.startsWith('http')
       if (isExternal) {
         node.properties = {
           ...node.properties,
